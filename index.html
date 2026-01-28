@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Varão Motors - Parking System</title>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Varão Motors <span>Parking System 1.0</span></h1>
+    </header>
+
+    <div class="dashboard">
+      <div class="card">
+        <div class="icon">🎟️</div>
+        <h2>Entrada</h2>
+        <form id="formEntrada">
+          <label for="placaEntrada" class="sr-only">Placa do Veículo</label>
+          <input
+            type="text"
+            id="placaEntrada"
+            placeholder="PLACA"
+            maxlength="8"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="btnEntrar" class="btn-primary">
+            Registrar Entrada
+          </button>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="icon">💸</div>
+        <h2>Pagamento</h2>
+        <div>
+          <label for="placaPagamento" class="sr-only">Consultar Placa</label>
+          <input
+            type="text"
+            id="placaPagamento"
+            placeholder="PLACA"
+            maxlength="8"
+            autocomplete="off"
+          />
+          <button type="button" id="btnConsultar" class="btn-success">
+            Baixar Ticket
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚧</div>
+        <h2>Saída</h2>
+        <div>
+          <label for="placaSaida" class="sr-only">Liberar Placa</label>
+          <input
+            type="text"
+            id="placaSaida"
+            placeholder="PLACA"
+            maxlength="8"
+            autocomplete="off"
+          />
+          <button type="button" id="btnSair" class="btn-danger">
+            Liberar Cancela
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-full">
+      <h3>📍 Pátio em Tempo Real</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Entrada</th>
+            <th>Tempo</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaCorpo"></tbody>
+      </table>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
