@@ -33,7 +33,7 @@ A aplicação simula o dia a dia da loja **Varão Motors**, permitindo entrada d
 
 1. Clone este repositório:
    \`\`\`bash
-   git clone https://github.com/SEU-USUARIO/varao-motors-parking.git
+   git clone https://subgabri.github.io/varao-motors-parking/
    \`\`\`
 2. Como o projeto utiliza **ES Modules**, é necessário rodá-lo através de um servidor local (para evitar bloqueio de CORS do navegador).
    - Se usar VS Code, instale a extensão **Live Server**.
@@ -41,5 +41,5 @@ A aplicação simula o dia a dia da loja **Varão Motors**, permitindo entrada d
 
 ## 👨‍💻 Autor
 
-Desenvolvido por **[Gabriel Messias]**.
-Entre em contato: [Seu LinkedIn]
+Desenvolvido por **Gabriel Messias**.
+Entre em contato: https://www.linkedin.com/in/gabriel-messias-928882290/
