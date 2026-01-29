@@ -75,10 +75,19 @@
             maxlength="8"
             autocomplete="off"
           />
+
           <button type="button" id="btnSair" class="btn-danger">
             Liberar Cancela
           </button>
         </div>
+      </div>
+    </div>
+    </div> <div class="area-faturamento">
+      <div class="card card-destaque">
+        <div class="icon">💰</div>
+        <h2>Faturamento do Dia</h2>
+        <h3 id="valorFaturamento">R$ 0,00</h3>
+        <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: 5px">Total arrecadado hoje</p>
       </div>
     </div>
 
@@ -96,7 +105,36 @@
         <tbody id="tabelaCorpo"></tbody>
       </table>
     </div>
+    <div class="panel-full">
+      <h3>📜 Histórico de Veículos (Encerrados)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Valor Pago</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaHistorico"></tbody>
+      </table>
+    </div>
 
     <script type="module" src="js/main.js"></script>
+
+    <div class="panel-full">
+      <h3>📅 Fechamento Diário (Mês Atual)</h3>
+      <table class="tabela-mensal">
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Qtd. Veículos</th>
+            <th>Faturamento Total</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaRelatorioMensal">
+          </tbody>
+      </table>
+    </div>
   </body>
 </html>
