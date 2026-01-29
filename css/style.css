@@ -243,3 +243,39 @@ tr:hover {
 .tabela-mensal td {
   font-size: 1.1rem;
 }
+
+.saldo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.texto-borrado {
+  filter: blur(8px);
+  user-select: none;
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+#valorFaturamento:not(.texto-borrado) {
+  filter: blur(0);
+}
+
+.btn-olho {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  width: auto;
+  color: #7f8c8d;
+  transition: transform 0.2s;
+}
+
+.btn-olho:hover {
+  transform: scale(1.1);
+  color: var(--primary);
+  opacity: 1;
+}

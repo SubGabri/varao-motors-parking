@@ -82,12 +82,21 @@
         </div>
       </div>
     </div>
-    </div> <div class="area-faturamento">
+    <div class="area-faturamento">
       <div class="card card-destaque">
         <div class="icon">💰</div>
         <h2>Faturamento do Dia</h2>
-        <h3 id="valorFaturamento">R$ 0,00</h3>
-        <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: 5px">Total arrecadado hoje</p>
+
+        <div class="saldo-wrapper">
+          <h3 id="valorFaturamento" class="texto-borrado">R$ 0,00</h3>
+          <button id="btnOlho" class="btn-olho" title="Mostrar/Esconder">
+            👁️
+          </button>
+        </div>
+
+        <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: 5px">
+          Total arrecadado hoje
+        </p>
       </div>
     </div>
 
@@ -132,8 +141,7 @@
             <th>Faturamento Total</th>
           </tr>
         </thead>
-        <tbody id="tabelaRelatorioMensal">
-          </tbody>
+        <tbody id="tabelaRelatorioMensal"></tbody>
       </table>
     </div>
   </body>

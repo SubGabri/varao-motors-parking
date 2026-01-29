@@ -260,3 +260,21 @@ function renderizarRelatorioMensal() {
     })
     .join("");
 }
+
+// --- Lógica do "Olhinho" do Saldo ---
+const btnOlho = document.getElementById("btnOlho");
+const displayValor = document.getElementById("valorFaturamento");
+
+const alternarVisibilidadeSaldo = () => {
+  displayValor.classList.toggle("texto-borrado");
+
+  if (displayValor.classList.contains("texto-borrado")) {
+    btnOlho.innerText = "👁️"; // Olho aberto (para clicar e ver)
+  } else {
+    btnOlho.innerText = "🙈"; // Macaquinho tapando o olho (para esconder)
+  }
+};
+
+// Evento de clique no botão e também no próprio texto borrado
+btnOlho.addEventListener("click", alternarVisibilidadeSaldo);
+displayValor.addEventListener("click", alternarVisibilidadeSaldo);
