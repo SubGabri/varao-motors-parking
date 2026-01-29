@@ -203,7 +203,6 @@ tr:hover {
   }
 }
 
-/* Estilo para o número do faturamento */
 #valorFaturamento {
   font-size: 2.2rem;
   color: var(--success);
@@ -231,20 +230,16 @@ tr:hover {
   margin: 10px 0;
 }
 
-/* css/style.css */
-
-/* Tabela de Relatório Mensal */
 .tabela-mensal th {
-  background-color: #2c3e50; /* Azul escuro executivo */
+  background-color: #2c3e50;
   color: #ecf0f1;
 }
 
 .tabela-mensal tr:first-child td {
-  /* Destaca o dia de hoje (primeira linha) */
   background-color: #e8f8f5;
   border-left: 5px solid var(--success);
 }
 
 .tabela-mensal td {
-  font-size: 1.1rem; /* Letra um pouco maior */
+  font-size: 1.1rem;
 }
