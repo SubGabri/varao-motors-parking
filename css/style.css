@@ -20,7 +20,6 @@ body {
   background: var(--bg);
   color: var(--text);
   padding: 20px;
-
   -webkit-font-smoothing: antialiased;
 }
 
@@ -44,7 +43,6 @@ header span {
 
 .dashboard {
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
   max-width: 1100px;
@@ -60,7 +58,6 @@ header span {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,7 +131,6 @@ button:hover {
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-
   overflow-x: auto;
 }
 
@@ -183,30 +179,11 @@ tr:hover {
   background: #f39c12;
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  .card {
-    padding: 20px;
-  }
-
-  input,
-  button {
-    font-size: 1rem;
-    height: 48px;
-  }
-}
-
+/* --- FATURAMENTO --- */
 #valorFaturamento {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: var(--success);
-  margin-top: 10px;
+  margin: 10px 0;
   font-weight: 800;
 }
 
@@ -224,12 +201,7 @@ tr:hover {
   background-color: #fff;
 }
 
-#valorFaturamento {
-  font-size: 2.5rem;
-  color: var(--success);
-  margin: 10px 0;
-}
-
+/* --- TABELA MENSAL --- */
 .tabela-mensal th {
   background-color: #2c3e50;
   color: #ecf0f1;
@@ -279,8 +251,8 @@ tr:hover {
   color: var(--primary);
   opacity: 1;
 }
-/* --- NOVAS ADIÇÕES PARA SIMULADOR E EXCEL --- */
 
+/* --- ADIÇÕES SIMULADOR E EXCEL --- */
 .card-simulador {
   grid-column: span 3;
   padding: 40px !important;
@@ -300,7 +272,7 @@ tr:hover {
   width: auto;
   min-width: 220px;
   margin-bottom: 0;
-  text-transform: none; /* Datas não usam uppercase */
+  text-transform: none;
 }
 
 #resultado-simulacao {
@@ -317,60 +289,60 @@ tr:hover {
   margin-bottom: 20px;
 }
 
+/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
 @media (max-width: 768px) {
-  .header-historico {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-}
-
-/* --- AJUSTES DE RESPONSIVIDADE (CELULAR) --- */
-
-@media (max-width: 768px) {
-  /* Faz os cards ocuparem a largura total da tela */
   .dashboard {
-    grid-template-columns: 1fr; /* Uma coluna só no celular */
+    grid-template-columns: 1fr;
     padding: 0 10px;
   }
 
   .card-simulador {
-    grid-column: span 1 !important; /* Remove o span 3 que forçava largura larga */
+    grid-column: span 1 !important;
     padding: 20px !important;
   }
 
-  /* Ajusta os inputs do simulador para ficarem um embaixo do outro */
-  .simulador-inputs {
+  /* Corrigido de .simulador-inputs para .simulador-container */
+  .simulador-container {
     flex-direction: column;
     gap: 10px;
     width: 100%;
   }
 
-  .simulador-inputs input,
-  .simulador-inputs button {
-    width: 100% !important; /* Botão e inputs largura total */
+  .simulador-container input,
+  .simulador-container button {
+    width: 100% !important;
     min-width: unset;
   }
 
-  /* Garante que o histórico e tabelas não esmaguem */
   .header-historico {
     flex-direction: column;
     gap: 15px;
-    align-items: stretch;
+    text-align: center;
   }
 
-  .btn-export {
-    width: 100%; /* Botão Excel vira largura total no mobile */
-  }
-
-  /* Adiciona um scroll suave nas tabelas para não cortar dados */
   .panel-full {
     padding: 15px;
     margin: 20px 10px;
-    overflow-x: auto; /* Permite deslizar a tabela pro lado */
+    overflow-x: auto;
   }
 
   table {
-    font-size: 0.85rem; /* Diminui um pouco a letra na tabela */
+    font-size: 0.85rem;
   }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
