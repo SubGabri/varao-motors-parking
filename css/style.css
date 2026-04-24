@@ -324,3 +324,53 @@ tr:hover {
     text-align: center;
   }
 }
+
+/* --- AJUSTES DE RESPONSIVIDADE (CELULAR) --- */
+
+@media (max-width: 768px) {
+  /* Faz os cards ocuparem a largura total da tela */
+  .dashboard {
+    grid-template-columns: 1fr; /* Uma coluna só no celular */
+    padding: 0 10px;
+  }
+
+  .card-simulador {
+    grid-column: span 1 !important; /* Remove o span 3 que forçava largura larga */
+    padding: 20px !important;
+  }
+
+  /* Ajusta os inputs do simulador para ficarem um embaixo do outro */
+  .simulador-inputs {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .simulador-inputs input,
+  .simulador-inputs button {
+    width: 100% !important; /* Botão e inputs largura total */
+    min-width: unset;
+  }
+
+  /* Garante que o histórico e tabelas não esmaguem */
+  .header-historico {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .btn-export {
+    width: 100%; /* Botão Excel vira largura total no mobile */
+  }
+
+  /* Adiciona um scroll suave nas tabelas para não cortar dados */
+  .panel-full {
+    padding: 15px;
+    margin: 20px 10px;
+    overflow-x: auto; /* Permite deslizar a tabela pro lado */
+  }
+
+  table {
+    font-size: 0.85rem; /* Diminui um pouco a letra na tabela */
+  }
+}
