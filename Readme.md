@@ -1,45 +1,48 @@
-# 🚗 Varão Motors - Parking System
+# 🚗 Varão Motors - Parking System v2.5
 
-Sistema de gerenciamento de estacionamento desenvolvido para controlar o fluxo de veículos, cálculo de tarifas e histórico de pátio.
+Sistema de gerenciamento de estacionamento profissional desenvolvido para controlar o fluxo de veículos, cálculo automático de tarifas e inteligência de dados com exportação de relatórios.
 
-![Status do Projeto](https://img.shields.io/badge/Status-Conclu%C3%ADdo-green)
+![Status do Projeto](https://img.shields.io/badge/Status-Em%20Atualização-blue)
+![JavaScript](https://img.shields.io/badge/JS-ES6+-yellow)
+![Version](https://img.shields.io/badge/Version-2.5-orange)
 
 ## 📋 Sobre o Projeto
 
-Este projeto foi desenvolvido como parte do meu portfólio de desenvolvedor Front-end. O objetivo foi criar uma aplicação **Single Page (SPA)** funcional, sem uso de frameworks, focando na lógica pura do JavaScript e manipulação do DOM.
+Este projeto integra meu portfólio de desenvolvedor Front-end, focado em resolver problemas reais de logística e faturamento. A aplicação é uma **SPA (Single Page Application)** construída com JavaScript puro (Vanilla JS), aplicando conceitos avançados de manipulação de DOM e arquitetura modular.
 
-A aplicação simula o dia a dia da loja **Varão Motors**, permitindo entrada de veículos, consulta de valores com regras de negócio complexas e saída.
+Originalmente criado para a loja **Varão Motors**, o sistema evoluiu de um simples controle de entrada para uma ferramenta de gestão com simulador financeiro e exportação de dados para contabilidade.
 
-## 🚀 Funcionalidades
+## 🚀 Novas Funcionalidades (v2.5)
 
-- **Controle de Entrada:** Validação de placas (Padrão Mercosul e Antigo) via Regex.
-- **Cálculo de Tarifas:** - 15 min de tolerância (Grátis).
-  - Preço fixo para as primeiras 3 horas.
-  - Tarifação adicional por hora excedente.
-- **Persistência de Dados:** Uso de `localStorage` para manter os dados salvos mesmo após fechar o navegador.
-- **Dashboard em Tempo Real:** Tabela que atualiza automaticamente o tempo de permanência dos veículos.
+- **📈 Simulador de Estadia:** Card exclusivo para simulação de valores. Permite calcular orçamentos rapidamente antes mesmo da entrada do veículo.
+- **📊 Exportação para Excel:** Integração com a biblioteca SheetJS para gerar relatórios profissionais `.xlsx` do histórico de veículos, incluindo placa, entrada, saída e valor pago.
+- **💰 Gestão de Faturamento:** Dashboard com cálculo de lucro diário e fechamento mensal automático.
+- **👁️ Modo de Privacidade:** Função "olhinho" para ocultar/exibir o faturamento total, garantindo discrição no ambiente de trabalho.
+
+## ⚙️ Funcionalidades Core
+
+- **Controle de Entrada:** Validação rigorosa de placas (Padrão Mercosul e Antigo) via Regex.
+- **Regras de Negócio Complexas:** - 15 min de tolerância (Grátis).
+  - Tarifação progressiva (Preço fixo inicial + horas adicionais).
+- **Persistência de Dados:** Uso de `localStorage` com tratamento de erros (Versão Blindada).
+- **Dashboard em Tempo Real:** Atualização automática do tempo de permanência a cada minuto.
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **HTML5 Semântico**
-- **CSS3** (Design Responsivo e Clean UI)
+- **CSS3** (CSS Variables, Flexbox, Grid e Design Responsivo)
 - **JavaScript (ES6+)**
-  - ES Modules (Arquitetura modular: `core`, `storage`, `main`)
-  - Arrow Functions
-  - Array Methods (`filter`, `map`, `find`)
-  - Intl.NumberFormat para formatação monetária
+  - **ES Modules:** Arquitetura modular separando `core`, `storage`, `main` e `ui`.
+  - **SheetJS (XLSX):** Biblioteca externa para geração de planilhas.
+  - **LocalStorage API:** Para persistência de dados local.
 
 ## 📦 Como rodar o projeto
 
 1. Clone este repositório:
-   \`\`\`bash
-   git clone https://subgabri.github.io/varao-motors-parking/
-   \`\`\`
-2. Como o projeto utiliza **ES Modules**, é necessário rodá-lo através de um servidor local (para evitar bloqueio de CORS do navegador).
-   - Se usar VS Code, instale a extensão **Live Server**.
-   - Clique com botão direito no `index.html` e escolha "Open with Live Server".
 
-## 👨‍💻 Autor
+   ```bash
+   git clone [https://github.com/SubGabri/varao-motors-parking.git](https://github.com/SubGabri/varao-motors-parking.git)
 
-Desenvolvido por **Gabriel Messias**.
-Entre em contato: https://www.linkedin.com/in/gabriel-messias-928882290/
+   👨‍💻 Autor
+   Desenvolvido por Gabriel Messias.
+   ```

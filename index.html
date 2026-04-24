@@ -5,24 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varão Motors - Parking System</title>
     <link rel="stylesheet" href="css/style.css" />
-
-    <style>
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-      }
-    </style>
   </head>
   <body>
     <header>
-      <h1>Varão Motors <span>Parking System 2.0</span></h1>
+      <h1>Varão Motors <span>Parking System 2.5</span></h1>
     </header>
 
     <div class="dashboard">
@@ -75,25 +61,36 @@
             maxlength="8"
             autocomplete="off"
           />
-
           <button type="button" id="btnSair" class="btn-danger">
             Liberar Cancela
           </button>
         </div>
       </div>
+
+      <div class="card card-simulador">
+        <div class="icon">⏱️</div>
+        <h2>Simulador de Cobrança</h2>
+        <div class="simulador-container">
+          <input type="datetime-local" id="sim-entrada" />
+          <input type="datetime-local" id="sim-saida" />
+          <button onclick="simularValor()" class="btn-primary" id="btnSimular">
+            Calcular
+          </button>
+        </div>
+        <div id="resultado-simulacao"></div>
+      </div>
     </div>
+
     <div class="area-faturamento">
       <div class="card card-destaque">
         <div class="icon">💰</div>
         <h2>Faturamento do Dia</h2>
-
         <div class="saldo-wrapper">
           <h3 id="valorFaturamento" class="texto-borrado">R$ 0,00</h3>
           <button id="btnOlho" class="btn-olho" title="Mostrar/Esconder">
             👁️
           </button>
         </div>
-
         <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: 5px">
           Total arrecadado hoje
         </p>
@@ -114,7 +111,13 @@
         <tbody id="tabelaCorpo"></tbody>
       </table>
     </div>
+
     <div class="panel-full">
+      <div class="btn-exportar-container">
+        <button onclick="exportarExcel()" class="btn-success">
+          📥 Exportar Histórico (Excel)
+        </button>
+      </div>
       <h3>📜 Histórico de Veículos (Encerrados)</h3>
       <table>
         <thead>
@@ -130,6 +133,78 @@
     </div>
 
     <script type="module" src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script>
+      // Função do Simulador
+      window.simularValor = function () {
+        const entrada = document.getElementById("sim-entrada").value;
+        const saida = document.getElementById("sim-saida").value;
+        const res = document.getElementById("resultado-simulacao");
+        if (!entrada || !saida) {
+          res.innerHTML = "Preencha os campos!";
+          return;
+        }
+        const diffMs = new Date(saida) - new Date(entrada);
+        if (diffMs <= 0) {
+          res.innerHTML = "Saída inválida!";
+          return;
+        }
+        const horas = diffMs / 3600000;
+        res.innerHTML = `Valor Estimado: R$ ${(horas * 10).toFixed(2)}`;
+      };
+
+      // Função do Excel
+      window.exportarExcel = function () {
+        const bancoCompleto =
+          JSON.parse(localStorage.getItem("varao_motors_db")) || [];
+        const historico = bancoCompleto.filter((carro) => carro.saiu === true);
+
+        if (historico.length === 0) {
+          alert("Não há carros no histórico para exportar!");
+          return;
+        }
+
+        const dadosFormatados = historico.map((carro) => {
+          // Ajustado para 'valorPago' para bater com o seu main.js
+          const valorFinanceiro = carro.valorPago || 0;
+
+          return {
+            Placa: carro.placa,
+            Entrada: new Date(carro.entrada).toLocaleString("pt-BR"),
+            Saída: carro.saida
+              ? new Date(carro.saida).toLocaleString("pt-BR")
+              : "N/A",
+            "Valor Pago": `R$ ${parseFloat(valorFinanceiro).toFixed(2)}`,
+            Status: "Encerrado",
+          };
+        });
+
+        const ws = XLSX.utils.json_to_sheet(dadosFormatados);
+        const wb = XLSX.utils.book_new();
+
+        // Ajusta a largura das colunas para não cortar o texto
+        const larguraColunas = [
+          { wch: 15 }, // Placa
+          { wch: 22 }, // Entrada
+          { wch: 22 }, // Saída
+          { wch: 15 }, // Valor Pago
+          { wch: 12 }, // Status
+        ];
+        ws["!cols"] = larguraColunas;
+
+        XLSX.utils.book_append_sheet(wb, ws, "Histórico Varão Motors");
+        XLSX.writeFile(wb, `Relatorio_Varao_Motors.xlsx`);
+      };
+
+      // Define a data atual no simulador ao abrir a página
+      document.addEventListener("DOMContentLoaded", () => {
+        const agora = new Date();
+        agora.setMinutes(agora.getMinutes() - agora.getTimezoneOffset());
+        const input = document.getElementById("sim-entrada");
+        if (input) input.value = agora.toISOString().slice(0, 16);
+      });
+    </script>
 
     <div class="panel-full">
       <h3>📅 Fechamento Diário (Mês Atual)</h3>
