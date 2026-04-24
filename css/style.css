@@ -41,6 +41,7 @@ header span {
   display: block;
 }
 
+/* --- DASHBOARD E CARDS --- */
 .dashboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -78,6 +79,7 @@ header span {
   color: var(--primary);
 }
 
+/* --- INPUTS E BOTÕES --- */
 input {
   width: 100%;
   padding: 12px;
@@ -124,6 +126,7 @@ button:hover {
   background: var(--danger);
 }
 
+/* --- TABELAS E PAINÉIS --- */
 .panel-full {
   max-width: 1100px;
   margin: 40px auto;
@@ -201,21 +204,6 @@ tr:hover {
   background-color: #fff;
 }
 
-/* --- TABELA MENSAL --- */
-.tabela-mensal th {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-}
-
-.tabela-mensal tr:first-child td {
-  background-color: #e8f8f5;
-  border-left: 5px solid var(--success);
-}
-
-.tabela-mensal td {
-  font-size: 1.1rem;
-}
-
 .saldo-wrapper {
   display: flex;
   align-items: center;
@@ -289,7 +277,7 @@ tr:hover {
   margin-bottom: 20px;
 }
 
-/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
+/* --- MEDIA QUERIES (RESPONSIVIDADE CELULAR) --- */
 @media (max-width: 768px) {
   .dashboard {
     grid-template-columns: 1fr;
@@ -301,7 +289,6 @@ tr:hover {
     padding: 20px !important;
   }
 
-  /* Corrigido de .simulador-inputs para .simulador-container */
   .simulador-container {
     flex-direction: column;
     gap: 10px;
@@ -314,20 +301,28 @@ tr:hover {
     min-width: unset;
   }
 
+  /* EMPILHAMENTO VERTICAL DAS TABELAS */
+  .panel-full {
+    width: calc(100% - 20px);
+    margin: 20px auto;
+    padding: 15px;
+    overflow-x: auto;
+    display: block;
+  }
+
+  table {
+    min-width: 500px;
+    font-size: 0.85rem;
+  }
+
   .header-historico {
     flex-direction: column;
     gap: 15px;
     text-align: center;
   }
 
-  .panel-full {
-    padding: 15px;
-    margin: 20px 10px;
-    overflow-x: auto;
-  }
-
-  table {
-    font-size: 0.85rem;
+  .header-historico button {
+    width: 100% !important;
   }
 
   header h1 {
